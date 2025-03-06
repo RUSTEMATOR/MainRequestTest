@@ -42,7 +42,12 @@ const expectedResult = [
 
 const parametrizedData = {
     eu: {
-        proxy: 'a',
+        proxy: {
+            host: 'proxy.geonode.io',
+            port: 9000,
+            username: 'geonode_Zr3aVjywHC-type-residential-country-ie-state-leinster',
+            password: 'bebe29a2-c13b-4aa5-8c20-eb3dd10a8afd'
+        },
         links: [
             'http://kingbillycasidno.com/',
             'https://www.kingbillycasino1.com/land/enkings_world_welcome_pack/et/kings_world_welcome_pack',
@@ -102,7 +107,12 @@ const parametrizedData = {
     },
 
     bet: {
-        proxy: 'c',
+        proxy: {
+            host: 'proxy.geonode.io',
+            port: 9000,
+            username: 'geonode_Zr3aVjywHC-type-residential-country-ie-state-leinster',
+            password: 'bebe29a2-c13b-4aa5-8c20-eb3dd10a8afd'
+        },
         links: [
               'https://www.kingbillybet1.com/land/en',
               'https://www.kingbillybet2.com/land/en',
