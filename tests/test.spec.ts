@@ -1,4 +1,7 @@
 import {test, expect} from "@playwright/test";
+import VpnController from "../VpnController/vpnController";
+import {getRawAsset} from "node:sea";
+import vpnController from "../VpnController/vpnController";
 
 const expectedResult = [
     "kings_world_welcome_pack",
@@ -42,14 +45,14 @@ const expectedResult = [
 
 const parametrizedData = {
     eu: {
+        location: 'Ireland',
+
         proxy: {
-            host: 'proxy.geonode.io',
-            port: 9000,
+            server: 'proxy.geonode.io:9000',
             username: 'geonode_Zr3aVjywHC-type-residential-country-ie-state-leinster',
             password: 'bebe29a2-c13b-4aa5-8c20-eb3dd10a8afd'
         },
         links: [
-            'http://kingbillycasidno.com/',
             'https://www.kingbillycasino1.com/land/enkings_world_welcome_pack/et/kings_world_welcome_pack',
               'https://www.kingbillycasino1.com/land/en',
               'https://www.kingbillycasino.com/land/en',
@@ -75,8 +78,32 @@ const parametrizedData = {
         ]
     },
 
+    bet: {
+        location: 'Germany - Frankfurt - 1',
+
+        proxy: {
+            server: 'proxy.geonode.io:9000',
+            username: 'geonode_Zr3aVjywHC-type-residential-country-ie-state-leinster',
+            password: 'bebe29a2-c13b-4aa5-8c20-eb3dd10a8afd'
+        },
+        links: [
+              'https://www.kingbillybet1.com/land/en',
+              'https://www.kingbillybet2.com/land/en',
+              'https://www.kingbillybet3.com/land/en',
+              'https://www.kingbillybet4.com/land/en',
+              'https://www.kingbillybet5.com/land/en'
+        ]
+    },
+
+
     au: {
-        proxy: 'b',
+        location: 'Australia - Melbourne',
+
+       proxy: {
+            server: 'us.proxy.geonode.io:9000',
+            username: 'geonode_Zr3aVjywHC-type-residential-country-au-city-adelaide',
+            password: 'bebe29a2-c13b-4aa5-8c20-eb3dd10a8afd'
+        },
         links: [
           'https://www.kingbillywin1.com/land/en',
           'https://www.kingbillywin2.com/land/en',
@@ -106,31 +133,64 @@ const parametrizedData = {
         ]
     },
 
-    bet: {
-        proxy: {
-            host: 'proxy.geonode.io',
-            port: 9000,
-            username: 'geonode_Zr3aVjywHC-type-residential-country-ie-state-leinster',
-            password: 'bebe29a2-c13b-4aa5-8c20-eb3dd10a8afd'
-        },
-        links: [
-              'https://www.kingbillybet1.com/land/en',
-              'https://www.kingbillybet2.com/land/en',
-              'https://www.kingbillybet3.com/land/en',
-              'https://www.kingbillybet4.com/land/en',
-              'https://www.kingbillybet5.com/land/en'
-        ]
-    }
 }
 
 for (let type of Object.keys(parametrizedData)) {
     test.describe(`Validate 200 status of the page ${type}`, () => {
-        const {proxy, links} = parametrizedData[type]
+        let vpnController = new VpnController()
+        const {location, proxy, links} = parametrizedData[type]
+        let status;
+        const timeout = 30000;
+        const interval = 1000;
+        const startTime = Date.now();
+
+
+        test.beforeEach(async () => {
+            const currentStatus = await vpnController.vpnCheckStatus();
+            if (currentStatus === `Connected to ${location}`) {
+                console.log('Correct location, proceeding to the test');
+            } else if (currentStatus === `Not connected`) {
+                console.log('Connecting...');
+                await vpnController.vpnConnnect(location);
+            } else {
+                console.log('Changing location...')
+                await vpnController.vpnDisconnect();
+                await vpnController.sleepVPN(5000)
+                await vpnController.vpnConnnect(location);
+            }
+
+            do {
+                status = await vpnController.vpnCheckStatus();
+                console.log(`Current status: ${status}`);
+                if (status === `Connected to ${location}`) {
+                    console.log(`Successfully connected to ${location}`);
+                    break;
+                }
+                await new Promise(resolve => setTimeout(resolve, interval));
+            } while (Date.now() - startTime < timeout);
+        });
+
+        // test.use(
+        //     {
+        //         proxy: {
+        //             server: proxy.server,
+        //             username: proxy.username,
+        //             password: proxy.password
+        //         },
+        //
+        //         userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+        //     }
+        // )
 
         for (let link of links) {
            test(`Validate response status for ${link}`, async ({ page }) => {
 
+
                await page.goto(link)
+
+               if(type === 'au'){
+                   await page.waitForSelector('div.landings > ul[data-sveltekit-preload-data=\'off\'] > .svelte-ou2wjv:nth-of-type(1)')
+               }
 
                const namesOfLinksOnThePage = await page.evaluate(() => {
                     const elements = document.querySelectorAll(`div.landings > ul[data-sveltekit-preload-data='off'] > .svelte-ou2wjv`)
