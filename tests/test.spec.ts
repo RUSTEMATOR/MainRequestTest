@@ -205,11 +205,11 @@ for (let type of Object.keys(parametrizedData)) {
 
                     return array
                })
-               console.log(namesOfLinksOnThePage)
+            //    console.log(namesOfLinksOnThePage)
 
-               console.log('----------------------------------------------------------------')
+            //    console.log('----------------------------------------------------------------')
 
-               console.log(expectedResult)
+            //    console.log(expectedResult)
                expect(namesOfLinksOnThePage).toEqual(expectedResult)
             })
         }
