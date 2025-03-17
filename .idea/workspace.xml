@@ -5,8 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3102e4f7-2f90-4b9c-a428-ae0ee6c4a889" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/run_test.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/workflows/playwright.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/playwright.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/playwright.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/playwright.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/send-report.js" beforeDir="false" afterPath="$PROJECT_DIR$/send-report.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test.spec.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

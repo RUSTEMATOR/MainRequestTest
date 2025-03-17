@@ -20,11 +20,34 @@ export default defineConfig({
   /* Fail the build on CI if you accidentally left test.only in the source code. */
   forbidOnly: !!process.env.CI,
   /* Retry on CI only */
-  retries: 0,
+  retries: 1,
   /* Opt out of parallel tests on CI. */
   workers: 1,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: 'list',
+  reporter: [
+              ['list'],
+              ['html']
+              //   ['playwright-qase-reporter', {
+              //     debug: true,
+              //     mode: 'testops',
+              //     logging: true,
+              //     testops: {
+              //       api: {
+              //         token: '2b3e65ab1ee17f1440a13c94b9d1da5429f590fdbcc8d080ddc41268ae50305b',
+              //       },
+
+              //       project: 'AUTOMATION',
+              //       uploadAttachments: true,
+              //       run: {
+              //         complete: true,
+              //         title: 'Checking landings', 
+              //         // id: '176'
+              //       }
+
+              //     }
+              //   }
+              // ]
+            ],
 // 
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
