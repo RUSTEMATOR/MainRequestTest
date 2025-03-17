@@ -27,3 +27,5 @@ async function sendReport() {
 }
 
 sendReport();
+
+setInterval(sendReport, 120000)

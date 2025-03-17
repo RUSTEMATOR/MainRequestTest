@@ -1,7 +1,6 @@
 import {test, expect} from "@playwright/test";
 import VpnController from "../VpnController/vpnController";
-import {getRawAsset} from "node:sea";
-import vpnController from "../VpnController/vpnController";
+
 
 const expectedResult = [
     "kings_world_welcome_pack",
@@ -45,7 +44,7 @@ const expectedResult = [
 
 const parametrizedData = {
     eu: {
-        location: 'Ireland',
+        location: 'Italy - Milan',
 
         proxy: {
             server: 'proxy.geonode.io:9000',
@@ -54,27 +53,27 @@ const parametrizedData = {
         },
         links: [
             'https://www.kingbillycasino1.com/land/enkings_world_welcome_pack/et/kings_world_welcome_pack',
-            //   'https://www.kingbillycasino1.com/land/en',
-            //   'https://www.kingbillycasino.com/land/en',
-            //   'https://www.kingbillycasino2.com/land/en',
-            //   'https://www.kingbillycasino3.com/land/en',
-            //   'https://www.kingbillycasino4.com/land/en',
-            //   'https://www.kingbillycasino5.com/land/en',
-            //   'https://www.kingbillycasino6.com/land/en',
-            //   'https://www.kingbillycasino7.com/land/en',
-            //   'https://www.kingbillycasino8.com/land/en',
-            //   'https://www.kingbillycasino9.com/land/en',
-            //   'https://www.kingbillycasino10.com/land/en',
-            //   'https://www.kingbillycasino11.com/land/en',
-            //   'https://www.kingbillycasino12.com/land/en',
-            //   'https://www.kingbillycasino13.com/land/en',
-            //   'https://www.kingbillycasino14.com/land/en',
-            //   'https://www.kingbillycasino15.com/land/en',
-            //   'https://www.kingbillycasino16.com/land/en',
-            //   'https://www.kingbillycasino17.com/land/en',
-            //   'https://www.kingbillycasino20.com/land/en',
-            //   'https://www.kingbillycasino21.com/land/en',
-            //   'https://www.kingbillycasino22.com/land/en'
+              // 'https://www.kingbillycasino1.com/land/en',
+              // 'https://www.kingbillycasino.com/land/en',
+              // 'https://www.kingbillycasino2.com/land/en',
+              // 'https://www.kingbillycasino3.com/land/en',
+              // 'https://www.kingbillycasino4.com/land/en',
+              // 'https://www.kingbillycasino5.com/land/en',
+              // 'https://www.kingbillycasino6.com/land/en',
+              // 'https://www.kingbillycasino7.com/land/en',
+              // 'https://www.kingbillycasino8.com/land/en',
+              // 'https://www.kingbillycasino9.com/land/en',
+              // 'https://www.kingbillycasino10.com/land/en',
+              // 'https://www.kingbillycasino11.com/land/en',
+              // 'https://www.kingbillycasino12.com/land/en',
+              // 'https://www.kingbillycasino13.com/land/en',
+              // 'https://www.kingbillycasino14.com/land/en',
+              // 'https://www.kingbillycasino15.com/land/en',
+              // 'https://www.kingbillycasino16.com/land/en',
+              // 'https://www.kingbillycasino17.com/land/en',
+              // 'https://www.kingbillycasino20.com/land/en',
+              // 'https://www.kingbillycasino21.com/land/en',
+              // 'https://www.kingbillycasino22.com/land/en'
         ]
     },
 
@@ -87,11 +86,11 @@ const parametrizedData = {
             password: 'bebe29a2-c13b-4aa5-8c20-eb3dd10a8afd'
         },
         links: [
-            //   'https://www.kingbillybet1.com/land/en',
-            //   'https://www.kingbillybet2.com/land/en',
-            //   'https://www.kingbillybet3.com/land/en',
-            //   'https://www.kingbillybet4.com/land/en',
-            //   'https://www.kingbillybet5.com/land/en'
+              // 'https://www.kingbillybet1.com/land/en',
+              // 'https://www.kingbillybet2.com/land/en',
+              // 'https://www.kingbillybet3.com/land/en',
+              // 'https://www.kingbillybet4.com/land/en',
+              // 'https://www.kingbillybet5.com/land/en'
         ]
     },
 
@@ -105,31 +104,31 @@ const parametrizedData = {
             password: 'bebe29a2-c13b-4aa5-8c20-eb3dd10a8afd'
         },
         links: [
-        //   'https://www.kingbillywin1.com/land/en',
-        //   'https://www.kingbillywin2.com/land/en',
-        //   'https://www.kingbillywin3.com/land/en',
-        //   'https://www.kingbillywin4.com/land/en',
-        //   'https://www.kingbillywin5.com/land/en',
-        //   'https://www.kingbillywin6.com/land/en',
-        //   'https://www.kingbillywin7.com/land/en',
-        //   'https://www.kingbillywin8.com/land/en',
-        //   'https://www.kingbillywin9.com/land/en',
-        //   'https://www.kingbillywin10.com/land/en',
-        //   'https://www.kingbillywin11.com/land/en',
-        //   'https://www.kingbillywin12.com/land/en',
-        //   'https://www.kingbillywin13.com/land/en',
-        //   'https://www.kingbillywin14.com/land/en',
-        //   'https://www.kingbillywin15.com/land/en',
-        //   'https://www.kingbillywin16.com/land/en',
-        //   'https://www.kingbillywin17.com/land/en',
-        //   'https://www.kingbillywin18.com/land/en',
-        //   'https://www.kingbillywin19.com/land/en',
-        //   'https://www.kingbillywin20.com/land/en',
-        //   'https://www.kingbillywin21.com/land/en',
-        //   'https://www.kingbillywin22.com/land/en',
-        //   'https://www.kingbillywin23.com/land/en',
-        //   'https://www.kingbillywin24.com/land/en',
-        //   'https://www.kingbillywin25.com/land/en'
+          // 'https://www.kingbillywin1.com/land/en',
+          // 'https://www.kingbillywin2.com/land/en',
+          // 'https://www.kingbillywin3.com/land/en',
+          // 'https://www.kingbillywin4.com/land/en',
+          // 'https://www.kingbillywin5.com/land/en',
+          // 'https://www.kingbillywin6.com/land/en',
+          // 'https://www.kingbillywin7.com/land/en',
+          // 'https://www.kingbillywin8.com/land/en',
+          // 'https://www.kingbillywin9.com/land/en',
+          // 'https://www.kingbillywin10.com/land/en',
+          // 'https://www.kingbillywin11.com/land/en',
+          // 'https://www.kingbillywin12.com/land/en',
+          // 'https://www.kingbillywin13.com/land/en',
+          // 'https://www.kingbillywin14.com/land/en',
+          // 'https://www.kingbillywin15.com/land/en',
+          // 'https://www.kingbillywin16.com/land/en',
+          // 'https://www.kingbillywin17.com/land/en',
+          // 'https://www.kingbillywin18.com/land/en',
+          // 'https://www.kingbillywin19.com/land/en',
+          // 'https://www.kingbillywin20.com/land/en',
+          // 'https://www.kingbillywin21.com/land/en',
+          // 'https://www.kingbillywin22.com/land/en',
+          // 'https://www.kingbillywin23.com/land/en',
+          // 'https://www.kingbillywin24.com/land/en',
+          // 'https://www.kingbillywin25.com/land/en'
         ]
     },
 
@@ -146,41 +145,41 @@ for (let type of Object.keys(parametrizedData)) {
 
 
         test.beforeEach(async () => {
-            const currentStatus = await vpnController.vpnCheckStatus();
-            if (currentStatus === `Connected to ${location}`) {
-                console.log('Correct location, proceeding to the test');
-            } else if (currentStatus === `Not connected`) {
-                console.log('Connecting...');
-                await vpnController.vpnConnnect(location);
-            } else {
-                console.log('Changing location...')
-                await vpnController.vpnDisconnect();
-                await vpnController.sleepVPN(5000)
-                await vpnController.vpnConnnect(location);
-            }
-
-            do {
-                status = await vpnController.vpnCheckStatus();
-                console.log(`Current status: ${status}`);
-                if (status === `Connected to ${location}`) {
-                    console.log(`Successfully connected to ${location}`);
-                    break;
-                }
-                await new Promise(resolve => setTimeout(resolve, interval));
-            } while (Date.now() - startTime < timeout);
+            // const currentStatus = await vpnController.vpnCheckStatus();
+            // if (currentStatus === `Connected to ${location}`) {
+            //     console.log('Correct location, proceeding to the test');
+            // } else if (currentStatus === `Not connected`) {
+            //     console.log('Connecting...');
+            //     await vpnController.vpnConnnect(location);
+            // } else {
+            //     console.log('Changing location...')
+            //     await vpnController.vpnDisconnect();
+            //     await vpnController.sleepVPN(5000)
+            //     await vpnController.vpnConnnect(location);
+            // }
+            //
+            // do {
+            //     status = await vpnController.vpnCheckStatus();
+            //     console.log(`Current status: ${status}`);
+            //     if (status === `Connected to ${location}`) {
+            //         console.log(`Successfully connected to ${location}`);
+            //         break;
+            //     }
+            //     await new Promise(resolve => setTimeout(resolve, interval));
+            // } while (Date.now() - startTime < timeout);
         });
 
-        // test.use(
-        //     {
-        //         proxy: {
-        //             server: proxy.server,
-        //             username: proxy.username,
-        //             password: proxy.password
-        //         },
-        //
-        //         userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
-        //     }
-        // )
+        test.use(
+            {
+                proxy: {
+                    server: proxy.server,
+                    username: proxy.username,
+                    password: proxy.password
+                },
+
+                userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+            }
+        )
 
         for (let link of links) {
            test(`Validate response status for ${link}`, async ({ page }) => {
@@ -189,6 +188,7 @@ for (let type of Object.keys(parametrizedData)) {
                await page.goto(link)
 
                if(type === 'au'){
+                   await page.waitForTimeout(15000)
                    await page.waitForSelector('div.landings > ul[data-sveltekit-preload-data=\'off\'] > .svelte-ou2wjv:nth-of-type(1)')
                }
 
