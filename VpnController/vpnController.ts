@@ -1,12 +1,11 @@
-import {exec} from "child_process";
-
+import { exec } from "child_process";
 
 export class VpnController {
     constructor() {}
- 
-    async runVPN(command: string): Promise<string> {
-       return new Promise((resolve, reject) => {
-            exec(command, { cwd: 'C:/Program Files (x86)/ExpressVPN/services/' }, (error: any, stdout: string, stderr: string) => {
+
+    runVPN(command: string): Promise<string> {
+        return new Promise((resolve, reject) => {
+            exec(command, { cwd: 'C:/Program Files (x86)/ExpressVPN/services/' }, (error, stdout, stderr) => {
                 if (error) {
                     console.error(`Error executing command: ${error.message}`);
                     reject(error.message);
@@ -20,27 +19,27 @@ export class VpnController {
                 }
 
                 console.log(`Output: ${stdout}`);
-                resolve(stdout.trim());
+                resolve(stdout);
             });
         });
     }
 
-    async vpnConnnect(location: string){
-        this.runVPN(`ExpressVPN.CLI connect "${location}"`);
-        }
-    
-    async vpnDisconnect(){
-        this.runVPN('ExpressVPN.CLI disconnect');
-        }
-    
+    async vpnConnnect(location: string): Promise<string> {
+        return await this.runVPN(`ExpressVPN.CLI connect "${location}"`);
+    }
+
+    async vpnDisconnect(): Promise<string> {
+        return await this.runVPN('ExpressVPN.CLI disconnect');
+    }
+
     async vpnCheckStatus(): Promise<string> {
-        return await this.runVPN('ExpressVPN.CLI status')
+        const status = await this.runVPN('ExpressVPN.CLI status');
+        return status.trim();
     }
 
-    async sleepVPN(ms: number) {
+    async sleepVPN(ms: number): Promise<void> {
         return new Promise(resolve => setTimeout(resolve, ms));
-      }
-    
     }
+}
 
-export default VpnController
+export default VpnController;
