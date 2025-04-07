@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3102e4f7-2f90-4b9c-a428-ae0ee6c4a889" name="Changes" comment="" />
+    <list default="true" id="3102e4f7-2f90-4b9c-a428-ae0ee6c4a889" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/VpnController/vpnController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/VpnController/vpnController.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/playwright.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/playwright.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test.spec.ts" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -46,13 +51,14 @@
     "Playwright.Validate 200 status of the page (1).executor": "Run",
     "Playwright.Validate 200 status of the page.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "aboba",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/User/Desktop/Automation/MainRequestTest",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\Aqua 2024.1.2\\plugins\\javascript-base\\jsLanguageServicesImpl\\external"
+    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\Aqua 2024.3.2\\plugins\\javascript-base\\jsLanguageServicesImpl\\external"
   }
 }]]></component>
   <component name="RunManager" selected="Playwright.Validate 200 status of the page (1)">

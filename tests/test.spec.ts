@@ -34,11 +34,12 @@ const expectedResult = [
     "kraken",
     "kraken_guru",
     "ndb",
+    "ndb_100",
     "ndb_code",
     "ndbKing",
     "ndbKing_code",
+    "WelcomeCrypto",
     "christmas_welcome",
-    "JS Welcome",
     "push_app"
 ]
 
@@ -100,7 +101,7 @@ const parametrizedData = {
 
        proxy: {
             server: 'us.proxy.geonode.io:9000',
-            username: 'geonode_Zr3aVjywHC-type-residential-country-au-city-adelaide',
+            username: 'geonode_Zr3aVjywHC-type-residential-country-au-city-brisbane',
             password: 'bebe29a2-c13b-4aa5-8c20-eb3dd10a8afd'
         },
         links: [
@@ -145,72 +146,72 @@ for (let type of Object.keys(parametrizedData)) {
 
 
         test.beforeEach(async () => {
-            // const currentStatus = await vpnController.vpnCheckStatus();
-            // if (currentStatus === `Connected to ${location}`) {
-            //     console.log('Correct location, proceeding to the test');
-            // } else if (currentStatus === `Not connected`) {
-            //     console.log('Connecting...');
-            //     await vpnController.vpnConnnect(location);
-            // } else {
-            //     console.log('Changing location...')
-            //     await vpnController.vpnDisconnect();
-            //     await vpnController.sleepVPN(5000)
-            //     await vpnController.vpnConnnect(location);
-            // }
-            //
-            // do {
-            //     status = await vpnController.vpnCheckStatus();
-            //     console.log(`Current status: ${status}`);
-            //     if (status === `Connected to ${location}`) {
-            //         console.log(`Successfully connected to ${location}`);
-            //         break;
-            //     }
-            //     await new Promise(resolve => setTimeout(resolve, interval));
-            // } while (Date.now() - startTime < timeout);
+            const currentStatus = await vpnController.vpnCheckStatus();
+            if (currentStatus === `Connected to ${location}`) {
+                console.log('Correct location, proceeding to the test');
+            } else if (currentStatus === `Not connected`) {
+                console.log('Connecting...');
+                await vpnController.vpnConnnect(location);
+            } else {
+                console.log('Changing location...')
+                await vpnController.vpnDisconnect();
+                await vpnController.sleepVPN(5000)
+                await vpnController.vpnConnnect(location);
+            }
+
+            do {
+                status = await vpnController.vpnCheckStatus();
+                console.log(`Current status: ${status}`);
+                if (status === `Connected to ${location}`) {
+                    console.log(`Successfully connected to ${location}`);
+                    break;
+                }
+                await new Promise(resolve => setTimeout(resolve, interval));
+            } while (Date.now() - startTime < timeout);
         });
 
-        test.use(
-            {
-                proxy: {
-                    server: proxy.server,
-                    username: proxy.username,
-                    password: proxy.password
-                },
-
-                userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
-            }
-        )
+        // test.use(
+        //     {
+        //         proxy: {
+        //             server: proxy.server,
+        //             username: proxy.username,
+        //             password: proxy.password
+        //         },
+        //
+        //         userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+        //     }
+        // )
 
         for (let link of links) {
            test(`Validate response status for ${link}`, async ({ page }) => {
 
 
-               await page.goto(link)
+               await page.goto(link, {timeout: 60000})
 
                if(type === 'au'){
-                   await page.waitForTimeout(15000)
-                   await page.waitForSelector('div.landings > ul[data-sveltekit-preload-data=\'off\'] > .svelte-ou2wjv:nth-of-type(1)')
+                   await page.waitForSelector('body > div > div.wrapper.svelte-s5jonu > div.columns.svelte-s5jonu > div.pages.svelte-s5jonu > div:nth-child(5) > ul')
                }
 
                const namesOfLinksOnThePage = await page.evaluate(() => {
-                    const elements = document.querySelectorAll(`div.landings > ul[data-sveltekit-preload-data='off'] > .svelte-ou2wjv`)
+                    const elements = document.querySelectorAll(`div.landings > ul[data-sveltekit-preload-data='off']`)
                     const arrayOfElements = Array.from(elements)
                     const array = []
 
                     for (let b of arrayOfElements) {
                         let text = (b as HTMLElement).innerText
 
-                        array.push(text)
+                        array.push(text.split('\n'))
                     }
 
                     return array
                })
-            //    console.log(namesOfLinksOnThePage)
-
-            //    console.log('----------------------------------------------------------------')
-
-            //    console.log(expectedResult)
-               expect(namesOfLinksOnThePage).toEqual(expectedResult)
+               // console.log(namesOfLinksOnThePage)
+               //
+               // console.log('----------------------------------------------------------------')
+               //
+               // console.log(expectedResult)
+               const flatReceived = namesOfLinksOnThePage.flat();
+               expect(flatReceived).toEqual(expectedResult)
             })
         }
     })

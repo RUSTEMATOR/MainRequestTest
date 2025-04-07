@@ -15,6 +15,8 @@ export default defineConfig({
   testDir: './tests',
 
   testMatch: '**/*.spec.ts',
+
+  timeout: 120000,
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -26,7 +28,7 @@ export default defineConfig({
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [
               ['list'],
-              // ['html']
+              ['html']
               //   ['playwright-qase-reporter', {
               //     debug: true,
               //     mode: 'testops',
@@ -61,13 +63,13 @@ export default defineConfig({
 
   /* Configure projects for major browsers */
   projects: [
-    // {name: 'setup',
-    // testMatch: '**/setUp/setUp.spec.ts',
-    // },
+    {name: 'setup',
+    testMatch: '**/setUp/setUp.spec.ts',
+    },
 
     {
       name: 'chromium',
-      // dependencies: ['setup'],
+      dependencies: ['setup'],
       use: { ...devices['Desktop Chrome'] },
       
     },
