@@ -39,7 +39,14 @@ const expectedResult = [
     "ndbKing",
     "ndbKing_code",
     "WelcomeCrypto",
+    "retargeting_20fs",
+    "welcome_250fs_elvis",
+    "kings_welcome_pack_151",
     "christmas_welcome",
+    "kings_no_dep_100",
+    "kings_no_dep_151",
+    "kings_no_dep_151_open",
+    "welcome_chicken_road",
     "push_app"
 ]
 
@@ -137,82 +144,50 @@ const parametrizedData = {
 
 for (let type of Object.keys(parametrizedData)) {
     test.describe(`Validate 200 status of the page ${type}`, () => {
-        let vpnController = new VpnController()
-        const {location, proxy, links} = parametrizedData[type]
-        let status;
-        const timeout = 30000;
-        const interval = 1000;
-        const startTime = Date.now();
+        const {proxy, links} = parametrizedData[type];
 
-
-        test.beforeEach(async () => {
-            const currentStatus = await vpnController.vpnCheckStatus();
-            if (currentStatus === `Connected to ${location}`) {
-                console.log('Correct location, proceeding to the test');
-            } else if (currentStatus === `Not connected`) {
-                console.log('Connecting...');
-                await vpnController.vpnConnnect(location);
-            } else {
-                console.log('Changing location...')
-                await vpnController.vpnDisconnect();
-                await vpnController.sleepVPN(5000)
-                await vpnController.vpnConnnect(location);
-            }
-
-            do {
-                status = await vpnController.vpnCheckStatus();
-                console.log(`Current status: ${status}`);
-                if (status === `Connected to ${location}`) {
-                    console.log(`Successfully connected to ${location}`);
-                    break;
-                }
-                await new Promise(resolve => setTimeout(resolve, interval));
-            } while (Date.now() - startTime < timeout);
+        test.use({
+            proxy: {
+                server: proxy.server,
+                username: proxy.username,
+                password: proxy.password
+            },
+            userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
         });
 
-        // test.use(
-        //     {
-        //         proxy: {
-        //             server: proxy.server,
-        //             username: proxy.username,
-        //             password: proxy.password
-        //         },
-        //
-        //         userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
-        //     }
-        // )
-
         for (let link of links) {
-           test(`Validate response status for ${link}`, async ({ page }) => {
+            test(`Validate response status for ${link}`, async ({ page, request}) => {
 
 
-               await page.goto(link, {timeout: 60000})
+                const location = async () => {
+               return (await request.get('https://www.kingbillycasino15.com/api/current_ip')).json()
+            }
+            console.log(await location())
 
-               if(type === 'au'){
-                   await page.waitForSelector('body > div > div.wrapper.svelte-s5jonu > div.columns.svelte-s5jonu > div.pages.svelte-s5jonu > div:nth-child(5) > ul')
-               }
 
-               const namesOfLinksOnThePage = await page.evaluate(() => {
-                    const elements = document.querySelectorAll(`div.landings > ul[data-sveltekit-preload-data='off']`)
-                    const arrayOfElements = Array.from(elements)
-                    const array = []
+
+                await page.goto(link, {timeout: 60000});
+            
+
+                if(type === 'au'){
+                    await page.waitForSelector('body > div > div.wrapper.svelte-s5jonu > div.columns.svelte-s5jonu > div.pages.svelte-s5jonu > div:nth-child(5) > ul')
+                }
+
+                const namesOfLinksOnThePage = await page.evaluate(() => {
+                    const elements = document.querySelectorAll(`div.landings > ul[data-sveltekit-preload-data='off']`);
+                    const arrayOfElements = Array.from(elements);
+                    const array: string[][] = [];
 
                     for (let b of arrayOfElements) {
-                        let text = (b as HTMLElement).innerText
-
-                        array.push(text.split('\n'))
+                        let text = (b as HTMLElement).innerText;
+                        array.push(text.split('\n'));
                     }
 
-                    return array
-               })
-               // console.log(namesOfLinksOnThePage)
-               //
-               // console.log('----------------------------------------------------------------')
-               //
-               // console.log(expectedResult)
-               const flatReceived = namesOfLinksOnThePage.flat();
-               expect(flatReceived).toEqual(expectedResult)
-            })
+                    return array;
+                });
+                const flatReceived = namesOfLinksOnThePage.flat();
+                expect(flatReceived).toEqual(expectedResult)
+            });
         }
-    })
+    });
 }
