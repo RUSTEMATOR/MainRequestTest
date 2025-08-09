@@ -52,46 +52,25 @@ const expectedResult = [
 
 const parametrizedData = {
     eu: {
-        location: 'Italy - Milan',
-
-        proxy: {
-            server: 'proxy.geonode.io:9000',
-            username: 'geonode_Zr3aVjywHC-type-residential-country-ie-state-leinster',
-            password: 'bebe29a2-c13b-4aa5-8c20-eb3dd10a8afd'
-        },
-        links: [
-            // 'https://www.kingbillycasino1.com/land/enkings_world_welcome_pack/et/kings_world_welcome_pack',
-              'https://www.kingbillycasino1.com/land/en',
-              'https://www.kingbillycasino.com/land/en',
-              'https://www.kingbillycasino2.com/land/en',
-              'https://www.kingbillycasino3.com/land/en',
-              'https://www.kingbillycasino4.com/land/en',
-              'https://www.kingbillycasino5.com/land/en',
-              'https://www.kingbillycasino6.com/land/en',
-              'https://www.kingbillycasino7.com/land/en',
-              'https://www.kingbillycasino8.com/land/en',
-              'https://www.kingbillycasino9.com/land/en',
-              'https://www.kingbillycasino10.com/land/en',
-              'https://www.kingbillycasino11.com/land/en',
-              'https://www.kingbillycasino12.com/land/en',
-              'https://www.kingbillycasino13.com/land/en',
-              'https://www.kingbillycasino14.com/land/en',
-              'https://www.kingbillycasino15.com/land/en',
-              'https://www.kingbillycasino16.com/land/en',
-              'https://www.kingbillycasino17.com/land/en',
-              'https://www.kingbillycasino20.com/land/en',
-              'https://www.kingbillycasino21.com/land/en',
-              'https://www.kingbillycasino22.com/land/en'
-        ]
-    },
-
-    bet: {
         location: 'Germany - Frankfurt - 1',
 
         proxy: {
             server: 'proxy.geonode.io:9000',
-            username: 'geonode_Zr3aVjywHC-type-residential-country-ie-state-leinster',
+            username: 'geonode_Zr3aVjywHC-type-residential-country-de',
             password: 'bebe29a2-c13b-4aa5-8c20-eb3dd10a8afd'
+        },
+        links: [
+              'https://www.kingbillycasino.com/land/en',
+        ]
+    },
+
+    bet: {
+        location: 'Italy - Milan',
+
+        proxy: {
+            server: 'proxy.geonode.io:9000',
+            username: 'geonode_Zr3aVjywHC-type-residential-country-it-state-sicily',
+            password: 'bebe29a2-c13b-4aa5-8c20-eb3dd10a8afde'
         },
         links: [
               'https://www.kingbillybet1.com/land/en',
@@ -112,31 +91,7 @@ const parametrizedData = {
             password: 'bebe29a2-c13b-4aa5-8c20-eb3dd10a8afd'
         },
         links: [
-          'https://www.kingbillywin1.com/land/en',
-          'https://www.kingbillywin2.com/land/en',
-          'https://www.kingbillywin3.com/land/en',
-          'https://www.kingbillywin4.com/land/en',
-          'https://www.kingbillywin5.com/land/en',
-          'https://www.kingbillywin6.com/land/en',
-          'https://www.kingbillywin7.com/land/en',
-          'https://www.kingbillywin8.com/land/en',
-          'https://www.kingbillywin9.com/land/en',
-          'https://www.kingbillywin10.com/land/en',
-          'https://www.kingbillywin11.com/land/en',
-          'https://www.kingbillywin12.com/land/en',
-          'https://www.kingbillywin13.com/land/en',
-          'https://www.kingbillywin14.com/land/en',
-          'https://www.kingbillywin15.com/land/en',
-          'https://www.kingbillywin16.com/land/en',
-          'https://www.kingbillywin17.com/land/en',
-          'https://www.kingbillywin18.com/land/en',
-          'https://www.kingbillywin19.com/land/en',
-          'https://www.kingbillywin20.com/land/en',
-          'https://www.kingbillywin21.com/land/en',
-          'https://www.kingbillywin22.com/land/en',
           'https://www.kingbillywin23.com/land/en',
-          'https://www.kingbillywin24.com/land/en',
-          'https://www.kingbillywin25.com/land/en'
         ]
     },
 
