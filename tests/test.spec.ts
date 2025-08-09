@@ -69,8 +69,8 @@ const parametrizedData = {
 
         proxy: {
             server: 'proxy.geonode.io:9000',
-            username: 'geonode_Zr3aVjywHC-type-residential-country-it-state-sicily',
-            password: 'bebe29a2-c13b-4aa5-8c20-eb3dd10a8afde'
+            username: 'geonode_Zr3aVjywHC-type-residential-country-ie-state-munster',
+            password: 'bebe29a2-c13b-4aa5-8c20-eb3dd10a8afd'
         },
         links: [
               'https://www.kingbillybet1.com/land/en',
