@@ -107,8 +107,8 @@ const parametrizedData = {
         location: 'Australia - Melbourne',
 
        proxy: {
-            server: 'us.proxy.geonode.io:9000',
-            username: 'geonode_Zr3aVjywHC-type-residential-country-au-city-brisbane',
+            server: 'proxy.geonode.io:9000',
+            username: 'geonode_Zr3aVjywHC-type-residential-country-au-state-queensland',
             password: 'bebe29a2-c13b-4aa5-8c20-eb3dd10a8afd'
         },
         links: [
