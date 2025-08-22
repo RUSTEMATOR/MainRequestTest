@@ -59,6 +59,10 @@ export default defineConfig({
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on',
+    httpCredentials: {
+      username: 'user',
+      password: 'pass'
+  }
   },
 
   /* Configure projects for major browsers */

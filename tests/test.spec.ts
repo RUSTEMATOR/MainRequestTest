@@ -64,8 +64,21 @@ const parametrizedData = {
         ]
     },
 
+    eu_master: {
+       location: 'Italy - Milan',
+
+        proxy: {
+            server: 'proxy.geonode.io:9000',
+            username: 'geonode_Zr3aVjywHC-type-residential-country-ie-state-munster',
+            password: 'bebe29a2-c13b-4aa5-8c20-eb3dd10a8afd'
+        },
+        links: [
+              'https://www.kingbillycasino16.com/land/en'
+        ]
+    },
+
     bet: {
-        location: 'Italy - Milan',
+        location: 'Ireland',
 
         proxy: {
             server: 'proxy.geonode.io:9000',
@@ -91,7 +104,7 @@ const parametrizedData = {
             password: 'bebe29a2-c13b-4aa5-8c20-eb3dd10a8afd'
         },
         links: [
-          'https://www.kingbillywin23.com/land/en',
+          'https://www.kingbillywin24.com/land/en',
         ]
     },
 
