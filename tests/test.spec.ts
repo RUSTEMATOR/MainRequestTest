@@ -128,8 +128,14 @@ for (let type of Object.keys(parametrizedData)) {
 
 
                 const location = async () => {
-               return (await request.get('https://www.kingbillycasino15.com/api/current_ip')).json()
-            }
+                    if (type === 'au') {
+                        return (await request.get('https://www.kingbillywin24.com/api/current_ip')).json()
+                    } else if (type === 'eu') {
+                        return (await request.get('https://www.kingbillycasino16.com/api/current_ip')).json()
+                    } else if (type === 'bet') {
+                        return (await request.get('https://www.kingbillybet1.com/api/current_ip')).json()
+                    }
+                }
             console.log(await location())
 
 
@@ -154,7 +160,13 @@ for (let type of Object.keys(parametrizedData)) {
                     return array;
                 });
                 const flatReceived = namesOfLinksOnThePage.flat();
-                expect(flatReceived).toEqual(expectedResult)
+                try {
+                    expect(flatReceived).toEqual(expectedResult)
+                } catch (e) {
+                    const errorMsg = `Link: ${link}\nError: ${e instanceof Error ? e.stack || e.message : e}\n\n`;
+                    require('fs').appendFileSync('failed_links.txt', errorMsg);
+                    throw e;
+                }
             });
         }
     });

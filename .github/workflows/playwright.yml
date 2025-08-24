@@ -34,13 +34,29 @@ jobs:
       run: npx playwright test
 
 
-    - name: send default message
+
+    - name: Send error details to Telegram
       if: failure()
       uses: appleboy/telegram-action@master
       with:
         to: ${{ secrets.TELEGRAM_TO }}
         token: ${{ secrets.TELEGRAM_TOKEN }}
-        message: "Landing test: some of the test failed, check report: https://github.com/RUSTEMATOR/MainRequestTest/actions"
+        message: |
+          Landing test: some of the test failed.
+          ${{ steps.read_failed_links.outputs.content }}
+          Check report: https://github.com/RUSTEMATOR/MainRequestTest/actions
+
+    - name: Read failed_links.txt
+      if: failure()
+      id: read_failed_links
+      run: |
+        if [ -f failed_links.txt ]; then
+          echo "content<<EOF" >> $GITHUB_OUTPUT
+          head -c 3500 failed_links.txt >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+        else
+          echo "content=No failed_links.txt found" >> $GITHUB_OUTPUT
+        fi
 
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
@@ -48,3 +64,9 @@ jobs:
         name: playwright-report
         path: playwright-report/
         retention-days: 30
+
+    - uses: actions/upload-artifact@v4
+      if: failure()
+      with:
+        name: failed-links
+        path: failed_links.txt
