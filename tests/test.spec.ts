@@ -143,7 +143,7 @@ for (let type of Object.keys(parametrizedData)) {
             
 
                 if(type === 'au'){
-                    await page.waitForSelector('body > div > div.wrapper.svelte-s5jonu > div.columns.svelte-s5jonu > div.pages.svelte-s5jonu > div:nth-child(5) > ul')
+                    await page.waitForSelector('div.landings')
                 }
 
                 const namesOfLinksOnThePage = await page.evaluate(() => {
