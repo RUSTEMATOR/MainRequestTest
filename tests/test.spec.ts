@@ -7,7 +7,6 @@ const expectedResult = [
     "kings_world_welcome_pack_mindep20",
     "boosta",
     "casinosanalyzer_50",
-    "casinosanalyzer_50",
     "casinosanalyzer_10",
     "casinosanalyzer_20",
     "casinosanalyzer_100",
