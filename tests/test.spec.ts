@@ -164,7 +164,7 @@ for (let type of Object.keys(parametrizedData)) {
                     expect(flatReceived).toEqual(expectedResult)
                 } catch (e) {
                     const errorMsg = `Link: ${link}\nError: ${e instanceof Error ? e.stack || e.message : e}\n\n`;
-                    require('fs').appendFileSync('failed_links.txt', errorMsg);
+                    console.error(errorMsg);
                     throw e;
                 }
             });
