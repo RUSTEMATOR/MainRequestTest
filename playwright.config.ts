@@ -61,9 +61,9 @@ export default defineConfig({
     trace: 'on',
     video: 'on-first-retry',
     httpCredentials: {
-      username: 'user',
-      password: 'pass'
-  }
+      username: 'kbc',
+      password: 'kbc!',
+    },
   },
 
   /* Configure projects for major browsers */
